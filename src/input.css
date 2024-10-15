@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Dana";
+    src:
+      local("Dana"),
+      url("../fonts/Dana/woff2/DanaFaNum-Regular.woff2") format("woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Dana Medium";
+    src:
+      local("Dana Medium"),
+      url("../fonts/Dana/woff2/DanaFaNum-Medium.woff2") format("woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Dana DemiBold";
+    src:
+      local("Dana DemiBold"),
+      url("../fonts/Dana/woff2/DanaFaNum-DemiBold.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Morabba Medium";
+    src:
+      local("Morabba Medium"),
+      url("../fonts/Morabba/woff2/Morabba-Medium.woff2") format("woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Morabba Bold";
+    src:
+      local("Morabba Bold"),
+      url("../fonts/Morabba/woff2/Morabba-Bold.woff2") format("woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Morabba Light";
+    src:
+      local("Morabba Light"),
+      url("../fonts/Morabba/woff2/Morabba-Light.woff2") format("woff2");
+    font-display: swap;
+  }
+}
+
+@layer components {
+  .submenu {
+    @apply hidden pr-7 pt-3 text-sm text-zinc-600 transition-transform dark:text-white;
+  }
+  .submenu__open {
+    @apply flex flex-col gap-y-3;
+  }
+
+  .submenu__item-active::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 100px;
+    background-color: #fdba74;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+  .submenu__item-active {
+    position: relative;
+    padding-right: 10px;
+    color: #fdba74;
+  }
+  .circle {
+    @apply hidden items-center justify-center rounded-full border md:flex;
+  }
+  .lg-circle {
+    @apply absolute bottom-0 left-0 right-0 m-auto h-[203px] w-[203px] translate-y-1/2 border-white/25;
+  }
+  .md-circle {
+    @apply h-[145px] w-[145px] border-white/50;
+  }
+  .sm-circle {
+    @apply h-[95px] w-[95px] border-white/80;
+  }
+  @media screen and (min-width: 1280px) {
+    html.dark .products-section {
+      background: url("../images/product-bg.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    .products-section {
+      background: linear-gradient(
+          rgba(243, 244, 246, 0.65),
+          rgba(243, 244, 246, 0.65)
+        ),
+        url("../images/product-bg.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
+  .section-title {
+    @apply font-MorabbaMedium text-2xl md:text-3xl lg:text-5xl/[48px];
+  }
+  .section-subtitle {
+    @apply font-MorabbaLight text-lg/[32px] md:text-xl lg:text-3xl/[48px];
+  }
+  .section-link {
+    @apply flex h-10 items-center justify-center gap-x-2.5 rounded-md pl-1 pr-2.5 font-Dana text-base tracking-tightest text-orange-300 transition-colors hover:bg-orange-300/20 md:gap-x-1 md:text-base lg:text-xl;
+  }
+  .product-box {
+    @apply flex flex-col rounded-2xl bg-white p-2 shadow-normal dark:bg-zinc-700 md:px-5 md:pb-7 md:pt-5;
+  }
+  .off-percentage-sign {
+    @apply absolute right-0 top-0 block h-5 rounded-full bg-orange-300 px-2.5 font-DanaDemiBold text-xs leading-6 text-white dark:text-zinc-700 sm:right-1 sm:top-1 sm:h-6 sm:text-sm sm:leading-7 md:h-[30px] md:px-3 md:text-base md:leading-[36px];
+  }
+  .product-names {
+    @apply mt-2 line-clamp-2 h-10 font-DanaMedium text-sm text-zinc-700 dark:text-white sm:mt-3 md:mt-5 md:h-12 md:text-base lg:h-14 lg:text-xl;
+  }
+ 
+  .price-in-off {
+    @apply relative font-Dana text-xs text-gray-400 lg:text-sm xl:text-xl;
+  }
+  .price-in-off::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #ef4444;
+  }
+  .price-now {
+    @apply font-DanaDemiBold text-base tracking-tighter text-teal-600 dark:text-emerald-500 lg:text-xl;
+  }
+  .basket-svg {
+    @apply inline-flex h-[26px] w-[26px] cursor-pointer items-center justify-center rounded-full bg-gray-100 transition-all hover:bg-teal-600 child:transition-all dark:bg-zinc-800 dark:hover:bg-emerald-500 md:h-8 md:w-8 lg:h-9 lg:w-9;
+  }
+  .product-category-items {
+    @apply w-[100px] text-center sm:w-[150px] lg:w-[200px];
+  }
+  .swiper-button-prev-custom,
+  .swiper-button-next-custom {
+    @apply flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-white hover:bg-gray-300 dark:bg-zinc-700 dark:hover:bg-white dark:hover:text-zinc-700 lg:h-11 lg:w-11;
+  }
+  .article-box {
+    @apply flex gap-x-2.5 gap-y-3 rounded-2xl bg-white p-2.5 text-zinc-700 shadow-normal dark:bg-zinc-700 dark:text-white sm:flex-col;
+  }
+  .service-box {
+    @apply flex flex-col items-center justify-center gap-x-4 gap-y-5 sm:flex-row sm:justify-start;
+  }
+
+  @media screen and (max-width: 640px) {
+    html.dark .services::after {
+      content: "";
+      width: 1px;
+      height: calc(100% + 20px);
+      background: rgba(255, 255, 255, 0.1);
+      position: absolute;
+      inset: 0;
+      margin: auto;
+    }
+    html.dark .services::before {
+      content: "";
+      width: calc(100% - 2rem);
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      position: absolute;
+      inset: 0;
+      margin: auto;
+    }
+    .services::after {
+      content: "";
+      width: 1px;
+      height: calc(100% + 20px);
+      background: #d1d5db;
+      position: absolute;
+      inset: 0;
+      margin: auto;
+    }
+    .services::before {
+      content: "";
+      width: calc(100% - 2rem);
+      height: 1px;
+      background: #d1d5db;
+      position: absolute;
+      inset: 0;
+      margin: auto;
+    }
+  }
+  .footer-li {
+    @apply flex items-center gap-x-2 font-Dana text-base/7 hover:text-orange-300 lg:gap-x-3 lg:text-xl/7;
+  }
+
+  .footer-li-span {
+    @apply inline-block h-1 w-2 rounded-full bg-gray-300 group-hover:bg-orange-300 lg:w-2.5;
+  }
+}
+@layer utilities {
+  .ltr-text {
+    direction: ltr;
+    text-align: left;
+  }
+}
